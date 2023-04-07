@@ -1,14 +1,13 @@
 ---
 - name: Auto iDRAC Configuration
   hosts: IDRACSVRS
-  become: no
   gather_facts: no
   tasks:
      - name: update IDRAC
        dell_om_firmware:
-       fw_iso_url: http://171.229.20.248:8880/iso/iDRAC-with-Lifecycle-Controller_Firmware_T9J9H_WN64_6.10.30.20_A00.EXE
-       fw_type: idrac
-       fw_update_policy: normal
-       reboot_after_install: true
+        fw_iso_url: http://171.229.20.248:8880/iso/iDRAC-with-Lifecycle-Controller_Firmware_T9J9H_WN64_6.10.30.20_A00.EXE
+        fw_type: idrac
+        fw_update_policy: normal
+        reboot_after_install: true
        register: out
      - debug: var=out.stdout_lines
