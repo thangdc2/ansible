@@ -12,3 +12,7 @@
        raw: racadm set iDRAC.serverboot.FirstBootDevice VCD-DVD
        register: out
      - debug: var=out.stdout_lines
+     - name: reset server
+       raw: racadm serveraction powercycle
+       register: out
+     - debug: var=out.stdout_lines
