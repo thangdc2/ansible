@@ -1,0 +1,10 @@
+---
+- name: Auto iDRAC Configuration
+  hosts: IDRACSVRS
+  become: no
+  gather_facts: no
+  tasks:
+     - name: unmount http iso
+       raw: racadm remoteimage -d
+       register: out
+     - debug: var=out.stdout_lines
