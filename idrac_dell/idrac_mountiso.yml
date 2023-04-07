@@ -4,6 +4,10 @@
   become: no
   gather_facts: no
   tasks:
+     - name: unmount http iso
+       raw: racadm remoteimage -d
+       register: out
+     - debug: var=out.stdout_lines
      - name: mount http iso
        raw: racadm remoteimage -c -l http://171.229.20.248:8880/iso/ubuntu_2004_autoinstall.iso
        register: out
