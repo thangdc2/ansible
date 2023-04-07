@@ -2,7 +2,7 @@
 - name: Install Dell EMC OpenManage collection
   hosts: localhost
   tasks:
-  - name: Install collection
-    ansible.builtin.ansible_galaxy:
-      name: dellemc.openmanage
-      version: 2.7.0
+   - name: Install collection
+     community.general.ansible_galaxy:
+       name: dellemc.openmanage
+       version: 2.7.0
