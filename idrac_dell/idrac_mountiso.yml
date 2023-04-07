@@ -1,0 +1,14 @@
+---
+- name: Auto iDRAC Configuration
+  hosts: IDRACSVRS
+  become: no
+  gather_facts: no
+  tasks:
+     - name: mount http iso
+       raw: racadm remoteimage -c -l http://171.229.20.248:8880/iso/ubuntu_2004_autoinstall.iso
+       register: out
+     - debug: var=out.stdout_lines
+     - name: set boot to iso once
+       raw: racadm set iDRAC.serverboot.FirstBootDevice VCD-DVD
+       register: out
+     - debug: var=out.stdout_lines
