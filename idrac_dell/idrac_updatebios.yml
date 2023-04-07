@@ -1,0 +1,10 @@
+---
+- name: Auto iDRAC Configuration
+  hosts: IDRACSVRS
+  become: no
+  gather_facts: no
+  tasks:
+     - name: update idrac
+       raw: racadm update -f BIOS_NVD2K_WN64_2.17.1.EXE -l  171.229.20.248:/u01/autoiso_web/web/iso
+       register: out
+     - debug: var=out.stdout_lines
