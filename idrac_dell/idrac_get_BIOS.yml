@@ -1,0 +1,10 @@
+---
+- name: Auto iDRAC Configuration
+  hosts: IDRACSVRS
+  become: no
+  gather_facts: no
+  tasks:
+     - name: get something from idrac
+       raw: racadm get BIOS
+       register: out
+     - debug: var=out.stdout_lines
