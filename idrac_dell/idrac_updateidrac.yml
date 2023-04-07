@@ -3,8 +3,14 @@
   hosts: IDRACSVRS
   become: no
   gather_facts: no
+  collections:
+     - dellemc.openmanage
   tasks:
      - name: update idrac
-       raw: racadm update -f iDRAC-with-Lifecycle-Controller_Firmware_FPTF1_WN64_5.10.10.00_A00.EXE -l 10.60.130.45:/u01/var/www/html/idrac_fw
+       dell_om_firmware:
+       fw_iso_url: http://171.229.20.248:8880/iso/iDRAC-with-Lifecycle-Controller_Firmware_T9J9H_WN64_6.10.30.20_A00.EXE
+       fw_type: idrac
+       fw_update_policy: normal
+       reboot_after_install: true
        register: out
      - debug: var=out.stdout_lines
