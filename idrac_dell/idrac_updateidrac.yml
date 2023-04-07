@@ -1,0 +1,10 @@
+---
+- name: Auto iDRAC Configuration
+  hosts: IDRACSVRS
+  become: no
+  gather_facts: no
+  tasks:
+     - name: update idrac
+       raw: racadm update -f iDRAC-with-Lifecycle-Controller_Firmware_FPTF1_WN64_5.10.10.00_A00.EXE -l 10.60.130.45:/u01/var/www/html/idrac_fw
+       register: out
+     - debug: var=out.stdout_lines
