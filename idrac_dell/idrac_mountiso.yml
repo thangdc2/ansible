@@ -5,7 +5,7 @@
   gather_facts: no
   tasks:
      - name: mount http iso
-       raw: racadm remoteimage -c -l http://171.229.20.248:8880/iso/ubuntu_2004_autoinstall.iso
+       raw: racadm remoteimage -c -l http://171.229.20.248:8880/iso/3aab9f0a-bbff-4264-9953-558844f85f81_centos_79_mod.iso
        register: out
      - debug: var=out.stdout_lines
      - name: set boot to iso once
