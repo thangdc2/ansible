@@ -1,0 +1,11 @@
+---
+- name: Auto iDRAC Configuration
+  hosts: IDRACSVRS
+  serial: 5
+  become: no
+  gather_facts: no
+  tasks:
+     - name: reset server
+       raw: racadm serveraction powercycle
+       register: out
+     - debug: var=out.stdout_lines
