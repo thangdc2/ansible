@@ -1,0 +1,10 @@
+---
+- name: Auto iDRAC Configuration
+  hosts: IDRACSVRS
+  become: no
+  gather_facts: no
+  tasks:
+     - name: commit job
+       raw: racadm jobqueue create BIOS.Setup.1-1
+       register: out
+     - debug: var=out.stdout_lines
